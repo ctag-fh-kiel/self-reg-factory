@@ -1,3 +1,4 @@
+// Author / Source https://github.com/Xadeck/Registerer
 // Framework for performing registration of object factories.
 //
 // The major points of the framework are:

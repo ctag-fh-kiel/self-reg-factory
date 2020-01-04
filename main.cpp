@@ -4,8 +4,11 @@
 
 using factory::Registry;
 
-int main(int, char**) {
-    std::unique_ptr<ctagAudioPlugin> shape = Registry<ctagAudioPlugin>::New("ctagAudioPluginAM");
-    assert(shape);
-    shape->Process();  // will draw a rectangle!
+int main(int argc, char** argv) {
+    std::unique_ptr<ctagAudioPlugin> plugin = Registry<ctagAudioPlugin>::New(argv[1]);
+    assert(plugin);
+    plugin->Process();  // will draw a rectangle!
+    plugin = Registry<ctagAudioPlugin>::New(argv[2]);
+    plugin->Process(); 
+    plugin = nullptr;
 }
