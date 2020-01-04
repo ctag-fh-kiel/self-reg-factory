@@ -4,10 +4,11 @@ project(CTAG-Plug VERSION 0.1.0)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-include(CTest)
-enable_testing()
+add_subdirectory(ctag)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR} ctag)
 
-add_executable(CTAG-Plug main.cpp ctagAudioPluginAM.cpp ctagAudioPluginFM.cpp)
+add_executable(CTAG-Plug main.cpp)
+target_link_libraries(CTAG-Plug ctag)
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})

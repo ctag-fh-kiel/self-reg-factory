@@ -1,0 +1,1 @@
+add_library(ctag ctagAudioPluginAM.cpp ctagAudioPluginFM.cpp)
