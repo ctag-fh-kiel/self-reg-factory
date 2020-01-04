@@ -1,13 +1,13 @@
-#include "registerer.hpp"
-#include "ctagAudioPlugin.hpp"
 #include <iostream>
+#include "plugins.hpp"
 
-using factory::Registry;
-
-int main(int argc, char** argv) {
-    std::unique_ptr<ctagAudioPlugin> plugin = Registry<ctagAudioPlugin>::New("ctagAudioPluginAM");
-    assert(plugin);
-    float in[32], out[32];
-    plugin->Process(in, out);  
-    plugin = nullptr;
+int main()
+{
+    auto &factory = PluginSystem::PluginFactory::Instance();
+    
+    auto plugin = factory.GetPlugin("Plugin1");
+    
+    plugin->DoSomething();
+    
+    return 0;
 }
