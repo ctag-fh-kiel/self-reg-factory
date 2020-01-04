@@ -4,5 +4,5 @@
 class ctagAudioPlugin {
 public:
   virtual ~ctagAudioPlugin() {}
-  virtual void Process() const = 0;
+  virtual void Process(const float *, float *) const = 0;
 };

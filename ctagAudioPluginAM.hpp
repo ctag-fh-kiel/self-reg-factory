@@ -4,7 +4,7 @@
 class ctagAudioPluginAM : public ctagAudioPlugin{
     REGISTER("ctagAudioPluginAM", ctagAudioPlugin);
 public: 
-  void Process() const override; 
+  void Process(const float *, float *) const override; 
   ctagAudioPluginAM();
   ~ctagAudioPluginAM();
 };

@@ -1,6 +1,6 @@
 #include "ctagAudioPluginFM.hpp"
 
-void ctagAudioPluginFM::Process () const { 
+void ctagAudioPluginFM::Process (const float *in, float *out) const { 
     std::cout << "ctag FM\n"; 
 }
 
