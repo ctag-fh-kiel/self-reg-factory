@@ -5,7 +5,8 @@ using namespace CTAG::SP;
 
 ctagSoundProcessorStereoAM::ctagSoundProcessorStereoAM()
 {
-    std::cout << "Constructor" << std::endl;
+    //std::cout << "Constructor" << std::endl;
+    isStereo = true;
 }
 
 void ctagSoundProcessorStereoAM::Process(const ProcessData &data){
@@ -16,5 +17,5 @@ void ctagSoundProcessorStereoAM::Process(const ProcessData &data){
 }
 
 ctagSoundProcessorStereoAM::~ctagSoundProcessorStereoAM(){
-    std::cout << "Destructor" << std::endl;
+    //std::cout << "Destructor" << std::endl;
 }

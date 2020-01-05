@@ -9,6 +9,8 @@ int main()
 {
     std::unique_ptr<ctagSoundProcessor> res( new ctagSoundProcessorStereoAM());
     
+    std::cout << "isStereo: " << res->GetIsStereo() << std::endl;
+
     ProcessData data;
     float b0[32], b1[32];
     data.buf0 = b0;

@@ -9,6 +9,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR} ctag)
 
 add_executable(CTAG-Plug main.cpp)
 target_link_libraries(CTAG-Plug ctag)
+target_include_directories(CTAG-Plug PRIVATE ctag)
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
