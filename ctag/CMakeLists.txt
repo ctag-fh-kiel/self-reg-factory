@@ -1,1 +1,6 @@
-add_library(ctag plugins.cpp plugin1.cpp)
+file(GLOB SRCS
+    *.cpp
+    *.hpp
+)
+
+add_library(ctag ${SRCS})
