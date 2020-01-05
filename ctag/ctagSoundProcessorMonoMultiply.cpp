@@ -9,7 +9,7 @@ ctagSoundProcessorMonoMultiply::ctagSoundProcessorMonoMultiply()
     isStereo = false;
 }
 
-void ctagSoundProcessorMonoMultiply::Process(const ProcessData &data){
+void ctagSoundProcessorMonoMultiply::Process(const ProcessData &data) const {
     for(uint32_t i=0;i<data.bufSize; i++){
         data.buf0[i] = (float)i;
         data.buf1[i] = (float)i;

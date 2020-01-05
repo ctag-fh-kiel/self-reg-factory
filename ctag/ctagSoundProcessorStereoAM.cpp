@@ -9,7 +9,7 @@ ctagSoundProcessorStereoAM::ctagSoundProcessorStereoAM()
     isStereo = true;
 }
 
-void ctagSoundProcessorStereoAM::Process(const ProcessData &data){
+void ctagSoundProcessorStereoAM::Process(const ProcessData &data) const{
     for(uint32_t i=0;i<data.bufSize; i++){
         data.buf0[i] = (float)i;
         data.buf1[i] = (float)i;

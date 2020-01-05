@@ -13,7 +13,7 @@ namespace CTAG{
         };
         class ctagSoundProcessor{
             public:
-                virtual void Process(const ProcessData &) = 0; // pure virtual --> must be implemented by derived
+                virtual void Process(const ProcessData &) const = 0; // pure virtual --> must be implemented by derived
                 virtual ~ctagSoundProcessor(){};
                 bool GetIsStereo(){return isStereo;}
             protected:

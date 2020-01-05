@@ -4,8 +4,8 @@ namespace CTAG{
     namespace SP{
         class ctagSoundProcessorMonoMultiply : public ctagSoundProcessor{
             public: 
-                void Process(const ProcessData &) ;
-                ~ctagSoundProcessorMonoMultiply();
+                virtual void Process(const ProcessData &) const;
+                virtual ~ctagSoundProcessorMonoMultiply();
                 ctagSoundProcessorMonoMultiply();
         };
     }

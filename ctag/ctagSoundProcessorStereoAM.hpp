@@ -4,8 +4,8 @@ namespace CTAG{
     namespace SP{
         class ctagSoundProcessorStereoAM : public ctagSoundProcessor{
             public: 
-                void Process(const ProcessData &) ;
-                ~ctagSoundProcessorStereoAM();
+                virtual void Process(const ProcessData &) const;
+                virtual ~ctagSoundProcessorStereoAM();
                 ctagSoundProcessorStereoAM();
         };
     }
