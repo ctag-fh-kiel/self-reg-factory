@@ -1,0 +1,23 @@
+{
+    "id": "monomult",
+    "isStereo": true,
+    "params": [
+      {
+        "id": "enable",
+        "name": "Enable",
+        "type": "bool",
+        "current": true,
+        "trig": -1
+      },
+      {
+        "id": "factor",
+        "name": "Factor",
+        "type": "int",
+        "min": 0,
+        "max": 4095,
+        "step": 1,
+        "current": 4095,
+        "cv": -1
+      }
+    ]
+  }

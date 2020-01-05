@@ -3,4 +3,6 @@ file(GLOB SRCS
     *.hpp
 )
 
+add_subdirectory(json)
+
 add_library(ctag ${SRCS})
