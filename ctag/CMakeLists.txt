@@ -1,18 +1,33 @@
 include(cmake/bin2h.cmake)
 include(cmake/JSONParser.cmake)
 
+# get all sound processor files
 file(GLOB SOUND_PROCESSORS ctagSoundProcessor*.cpp)
+# convert JSON descriptors to c headers and extract processor IDs
 foreach(VAR ${SOUND_PROCESSORS})
+    # check if JSON file for sound processor exists
     get_filename_component(MYFILE_WITHOUT_EXT ${VAR} NAME_WLE)
     set(MYFILE_JSON ${CMAKE_CURRENT_SOURCE_DIR}/json/${MYFILE_WITHOUT_EXT}.json)
     if(NOT EXISTS ${MYFILE_JSON})
         message(FATAL_ERROR "JSON sound processor descriptor does not exist:${MYFILE_JSON}")
     endif()
-    bin2h(SOURCE_FILE json/${MYFILE_WITHOUT_EXT}.json
-        HEADER_FILE ../gen_include/${MYFILE_WITHOUT_EXT}_JSN.h
+    # convert JSON descriptor in header
+    bin2h(SOURCE_FILE ${MYFILE_JSON}
+        HEADER_FILE ${CMAKE_CURRENT_SOURCE_DIR}/gen_include/${MYFILE_WITHOUT_EXT}_JSN.h
         VARIABLE_NAME ${MYFILE_WITHOUT_EXT}_JSN
         NULL_TERMINATE
     )  
+    # read JSON descriptor and append ID and if stereo to header file
+    file(READ ${MYFILE_JSON} JSON_DATA)
+    sbeParseJson(JSON_DATA_PARSED JSON_DATA)
+    string(TOUPPER ${MYFILE_WITHOUT_EXT} MYFILE_WITHOUT_EXT_UC)
+    file(APPEND ${CMAKE_CURRENT_SOURCE_DIR}/gen_include/${MYFILE_WITHOUT_EXT}_JSN.h
+        "const unsigned char ${MYFILE_WITHOUT_EXT_UC}_ID[] = \"${JSON_DATA_PARSED.id}\\0\";\n\n"
+    )
+    file(APPEND ${CMAKE_CURRENT_SOURCE_DIR}/gen_include/${MYFILE_WITHOUT_EXT}_JSN.h
+        "const bool ${MYFILE_WITHOUT_EXT_UC}_ISSTEREO = ${JSON_DATA_PARSED.isStereo};\n\n"
+    )
+    sbeClearJson(example)
 endforeach()
 
 
