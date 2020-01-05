@@ -74,7 +74,7 @@ function(BIN2H)
 
     # declares byte array and the length variables
     set(arrayDefinition "const unsigned char ${BIN2H_VARIABLE_NAME}[] = { ${arrayValues} };")
-    set(arraySizeDefinition "const size_t ${BIN2H_VARIABLE_NAME}_SIZE = ${arraySize};")
+    set(arraySizeDefinition "const unsigned int ${BIN2H_VARIABLE_NAME}_SIZE = ${arraySize};")
 
     set(declarations "${arrayDefinition}\n\n${arraySizeDefinition}\n\n")
     if(BIN2H_APPEND)
@@ -158,7 +158,7 @@ function(BIN2H)
 
     # declares byte array and the length variables
     set(arrayDefinition "const unsigned char ${BIN2H_VARIABLE_NAME}[] = { ${arrayValues} };")
-    set(arraySizeDefinition "const size_t ${BIN2H_VARIABLE_NAME}_SIZE = ${arraySize};")
+    set(arraySizeDefinition "const unsigned int ${BIN2H_VARIABLE_NAME}_SIZE = ${arraySize};")
 
     set(declarations "${arrayDefinition}\n\n${arraySizeDefinition}\n\n")
     if(BIN2H_APPEND)
