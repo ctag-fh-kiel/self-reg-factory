@@ -3,6 +3,8 @@ include(cmake/JSONParser.cmake)
 
 # get all sound processor files
 file(GLOB SOUND_PROCESSORS ctagSoundProcessor*.cpp)
+# clean generated directory
+file(REMOVE_RECURSE gen_include)
 # convert JSON descriptors to c headers and extract processor IDs
 foreach(VAR ${SOUND_PROCESSORS})
     # check if JSON file for sound processor exists
@@ -17,6 +19,10 @@ foreach(VAR ${SOUND_PROCESSORS})
         VARIABLE_NAME ${MYFILE_WITHOUT_EXT}_JSN
         NULL_TERMINATE
     )  
+    # create include file for sound processor factory
+    file(APPEND ${CMAKE_CURRENT_SOURCE_DIR}/gen_include/ctagSoundProcessors.h
+        "#include \"${MYFILE_WITHOUT_EXT}_JSN.h\"\n"
+    )
     # read JSON descriptor and append ID and if stereo to header file
     file(READ ${MYFILE_JSON} JSON_DATA)
     sbeParseJson(JSON_DATA_PARSED JSON_DATA)
@@ -30,10 +36,12 @@ foreach(VAR ${SOUND_PROCESSORS})
     sbeClearJson(example)
 endforeach()
 
+# 
 
 file(GLOB SRCS
     *.cpp
     *.hpp
+    ./gen_include/*.h
 )
 
 add_library(ctag ${SRCS})

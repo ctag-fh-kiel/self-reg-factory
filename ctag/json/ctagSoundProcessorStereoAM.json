@@ -1,6 +1,7 @@
 {
     "id": "stereoam",
     "isStereo": true,
+    "name": "Stereo Amplitude Modulation",
     "params": [
       {
         "id": "enable",
