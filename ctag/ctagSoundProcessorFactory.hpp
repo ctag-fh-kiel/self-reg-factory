@@ -1,13 +1,22 @@
 #pragma once
 #include <memory>
-#include "ctagSoundProcessor.h"
-#include "ctagSoundProcessors.h"
+#include <string>
+#include "ctagSoundProcessor.hpp"
 
 namespace CTAG{
     namespace SP{
         class ctagSoundProcessorFactory{
             public:
-                static std::unique_ptr<ctagSoundProcessor> Create()
+                enum SoundProcessorIDs{
+                    none,
+                    am
+                };
+                static std::unique_ptr<ctagSoundProcessor> Create(const SoundProcessorIDs &id){
+                    switch(id){
+                        case none: return nullptr;
+                        default: return nullptr;
+                    }
+                }
         };
     }
 }

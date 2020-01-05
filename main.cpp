@@ -1,12 +1,15 @@
 #include <iostream>
 #include <memory>
 #include "ctagSoundProcessor.hpp"
-#include "ctagSoundProcessorStereoAM.hpp"
+#include "ctagSoundProcessorFactory.hpp"
 
 using namespace CTAG::SP;
 
 int main()
 {
+    std::unique_ptr<ctagSoundProcessor> processor = ctagSoundProcessorFactory::Create(ctagSoundProcessorFactory::none);
+    assert(processor);
+    /*
     std::unique_ptr<ctagSoundProcessor> res( new ctagSoundProcessorStereoAM());
     
     std::cout << "isStereo: " << res->GetIsStereo() << std::endl;
@@ -20,6 +23,6 @@ int main()
     for(int i=0;i<32;i++){
         std::cout << "Value " << data.buf0[i] << " " << data.buf1[i] << std::endl;
     }
-    
+    */
     return 0;
 }
