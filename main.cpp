@@ -22,7 +22,7 @@ int main()
     }
 
     printf("%s, %s\n", processor->GetCStrID(), processor->GetCStrJSONParamSpecs());
-
+    processor.reset();
     processor = ctagSoundProcessorFactory::Create("stereoam");
     printf("%s, %s\n", processor->GetCStrID(), processor->GetCStrJSONParamSpecs());
     
