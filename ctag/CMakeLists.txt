@@ -21,6 +21,7 @@ foreach(VAR ${SOUND_PROCESSORS})
     )  
     # create include file for sound processor factory
     file(APPEND ${CMAKE_CURRENT_SOURCE_DIR}/gen_include/ctagSoundProcessors.h
+        "#include \"${MYFILE_WITHOUT_EXT}.hpp\"\n"
         "#include \"${MYFILE_WITHOUT_EXT}_JSN.h\"\n"
     )
     # read JSON descriptor and append ID and if stereo to header file
@@ -45,3 +46,7 @@ file(GLOB SRCS
 )
 
 add_library(ctag ${SRCS})
+
+target_include_directories(ctag PUBLIC
+  ${CMAKE_CURRENT_SOURCE_DIR}/gen_include
+)

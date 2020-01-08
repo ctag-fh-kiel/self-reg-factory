@@ -16,6 +16,8 @@ namespace CTAG{
                 virtual void Process(const ProcessData &) const = 0; // pure virtual --> must be implemented by derived
                 virtual ~ctagSoundProcessor(){};
                 bool GetIsStereo(){return isStereo;}
+                virtual const unsigned char * GetCStrJSONParamSpecs() const = 0;
+                virtual const unsigned char * GetCStrID() const = 0;
             protected:
                 bool isStereo = false;
         };

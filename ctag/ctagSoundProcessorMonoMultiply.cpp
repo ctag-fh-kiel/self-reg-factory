@@ -1,5 +1,7 @@
 #include "ctagSoundProcessorMonoMultiply.hpp"
+#include "ctagSoundProcessorMonoMultiply_JSN.h"
 #include <iostream>
+
 
 using namespace CTAG::SP;
 
@@ -18,4 +20,12 @@ void ctagSoundProcessorMonoMultiply::Process(const ProcessData &data) const {
 
 ctagSoundProcessorMonoMultiply::~ctagSoundProcessorMonoMultiply(){
     //std::cout << "Destructor" << std::endl;
+}
+
+const unsigned char * ctagSoundProcessorMonoMultiply::GetCStrJSONParamSpecs() const{
+    return CTAGSOUNDPROCESSORMONOMULTIPLY_JSN;
+}
+
+const unsigned char * ctagSoundProcessorMonoMultiply::GetCStrID() const{
+    return CTAGSOUNDPROCESSORMONOMULTIPLY_ID;
 }
