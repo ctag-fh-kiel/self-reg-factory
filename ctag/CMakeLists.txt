@@ -34,17 +34,22 @@ foreach(VAR ${SOUND_PROCESSORS})
     file(APPEND ${CMAKE_CURRENT_SOURCE_DIR}/gen_include/${MYFILE_WITHOUT_EXT}_JSN.h
         "const bool ${MYFILE_WITHOUT_EXT_UC}_ISSTEREO = ${JSON_DATA_PARSED.isStereo};\n\n"
     )
+    # prepare big if variable for factory
+    set(BIG_IF "${BIG_IF}if(type.compare(\"${JSON_DATA_PARSED.id}\") == 0) return std::make_unique<${MYFILE_WITHOUT_EXT}>();\t\t\t\t\t\t\n")
     sbeClearJson(example)
 endforeach()
 
-# 
+# create big if structure for factory
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/ctagSoundProcessorFactory.hpp.in ${CMAKE_CURRENT_SOURCE_DIR}/gen_include/ctagSoundProcessorFactory.hpp @ONLY )
 
+# add sources to config, headers added for intellij
 file(GLOB SRCS
     *.cpp
     *.hpp
     ./gen_include/*.h
 )
 
+# set library target
 add_library(ctag ${SRCS})
 
 target_include_directories(ctag PUBLIC

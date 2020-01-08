@@ -7,7 +7,7 @@ using namespace CTAG::SP;
 
 int main()
 {
-    std::unique_ptr<ctagSoundProcessor> processor = ctagSoundProcessorFactory::Create("abd");
+    auto processor = ctagSoundProcessorFactory::Create("monomult");
     
     std::cout << "isStereo: " << processor->GetIsStereo() << std::endl;
 
@@ -21,6 +21,9 @@ int main()
         std::cout << "Value " << data.buf0[i] << " " << data.buf1[i] << std::endl;
     }
 
+    printf("%s, %s\n", processor->GetCStrID(), processor->GetCStrJSONParamSpecs());
+
+    processor = ctagSoundProcessorFactory::Create("stereoam");
     printf("%s, %s\n", processor->GetCStrID(), processor->GetCStrJSONParamSpecs());
     
     return 0;

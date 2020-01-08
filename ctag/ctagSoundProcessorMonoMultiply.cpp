@@ -7,8 +7,8 @@ using namespace CTAG::SP;
 
 ctagSoundProcessorMonoMultiply::ctagSoundProcessorMonoMultiply()
 {
-    //std::cout << "Constructor" << std::endl;
-    isStereo = false;
+    std::cout << "Constructor " << CTAGSOUNDPROCESSORMONOMULTIPLY_ID << std::endl;
+    isStereo = CTAGSOUNDPROCESSORMONOMULTIPLY_ISSTEREO;
 }
 
 void ctagSoundProcessorMonoMultiply::Process(const ProcessData &data) const {
@@ -19,7 +19,7 @@ void ctagSoundProcessorMonoMultiply::Process(const ProcessData &data) const {
 }
 
 ctagSoundProcessorMonoMultiply::~ctagSoundProcessorMonoMultiply(){
-    //std::cout << "Destructor" << std::endl;
+    std::cout << "Destructor " << CTAGSOUNDPROCESSORMONOMULTIPLY_ID << std::endl;
 }
 
 const unsigned char * ctagSoundProcessorMonoMultiply::GetCStrJSONParamSpecs() const{
